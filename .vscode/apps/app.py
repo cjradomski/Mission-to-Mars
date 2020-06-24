@@ -1,6 +1,6 @@
 # Import dependencies
 from flask import Flask, render_template
-from flask_pymongo import pymongo
+from flask_pymongo import PyMongo
 import scraping
 
 # Set up Flask
@@ -17,6 +17,7 @@ def index():
     return render_template("index.html", mars=mars)
 
 # Route for scraping
+@app.route("/scrape")
 def scrape():
     mars = mongo.db.mars
     mars_data = scraping.scrape_all()
